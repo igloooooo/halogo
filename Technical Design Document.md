@@ -33,6 +33,8 @@ It has integrated with JWT authentication and this application will work as IDP 
 
 It also implements Junit, integration test and front-end test (based on protractor). Please refer test folder.
 
+It has supported docker, please refer [README.md](README.md) file.
+
 ## Application Flow:
 
 ![Image of application Design](doc/design1.png)
