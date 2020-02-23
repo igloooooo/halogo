@@ -1,8 +1,11 @@
-#Technical Design Document
-##Background
+# Technical Design Document
+
+## Background
+
 this application is for HaloGO program testing
 
-##Business requriement analysis
+## Business requriement analysis
+
 As web application, it will convert digital number to word. For example:
 
 | Digital Number | Word                                                      |
@@ -14,7 +17,8 @@ As web application, it will convert digital number to word. For example:
 
 ![Image of UI Design](doc/halogo.ui.png)
 
-##Solution Overview
+## Solution Overview
+
 This application is JAVA web application based on Spring Boot and can be deployed to any J2EE container.
 
 This application use Vue.js as front-end javascript template and also integrated with Bootstrap. The front-end can be running as standalone node.js app.
@@ -29,11 +33,12 @@ It has integrated with JWT authentication and this application will work as IDP 
 
 It also implements Junit, integration test and front-end test (based on E2E). Please refer test folder.
 
-##Application Flow:
+## Application Flow:
 
 ![Image of application Design](doc/design1.png)
 
-##Code Overview
+## Code Overview
+
 The business requirements will be implemented in class TransformService
 
 ```
@@ -46,7 +51,7 @@ For the API endpoint, please refer:
 au.com.halogo.web.rest.TransformController
 ```
 
-##User Case
+## User Case
 
 1. please login via click 'Account->Login' with admin/admin
 2. goto url: /transfrom
