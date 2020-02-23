@@ -1,0 +1,30 @@
+package au.com.halogo.service.dto;
+
+public class TransformMessageRsp {
+    private String username;
+    private String word;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    @Override
+    public String toString() {
+        return "TransformMessageRsp{" +
+            "username='" + username + '\'' +
+            ", word='" + word + '\'' +
+            '}';
+    }
+}

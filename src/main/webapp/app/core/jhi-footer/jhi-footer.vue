@@ -1,6 +1,6 @@
 <template>
     <div id="footer" class="footer">
-        <p>This is your footer</p>
+        <p>@copy-right 2020 HaloGo</p>
     </div>
 </template>
 

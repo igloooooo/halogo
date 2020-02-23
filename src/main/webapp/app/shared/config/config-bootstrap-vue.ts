@@ -20,7 +20,9 @@ import {
   BLink,
   BAlert,
   BModal,
-  VBModal
+  VBModal,
+  BCardGroup,
+  BCard
 } from 'bootstrap-vue';
 
 export function initBootstrapVue(vue) {
@@ -46,5 +48,7 @@ export function initBootstrapVue(vue) {
   vue.component('b-nav-item', BNavItem);
   vue.component('b-nav-item-dropdown', BNavItemDropdown);
   vue.component('b-modal', BModal);
+  vue.component('b-card', BCard);
+  vue.component('b-card-group', BCardGroup);
   vue.directive('b-modal', VBModal);
 }

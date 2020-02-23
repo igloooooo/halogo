@@ -24,6 +24,7 @@ const JhiHealthComponent = () => import('../admin/health/health.vue');
 const JhiLogsComponent = () => import('../admin/logs/logs.vue');
 const JhiAuditsComponent = () => import('../admin/audits/audits.vue');
 const JhiMetricsComponent = () => import('../admin/metrics/metrics.vue');
+const Transform = () => import('../transform/transform.vue');
 /* tslint:disable */
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
@@ -37,6 +38,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/transform',
+      name: 'Transform',
+      component: Transform
     },
     {
       path: '/forbidden',

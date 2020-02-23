@@ -17,6 +17,12 @@
                         <span>Home</span>
                     </span>
                 </b-nav-item>
+                <b-nav-item to="/transform" exact>
+                    <span>
+                        <font-awesome-icon icon="search" />
+                        <span>Transform</span>
+                    </span>
+                </b-nav-item>
                 <b-nav-item-dropdown
                     id="entity-menu"
                     v-if="authenticated"
