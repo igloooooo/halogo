@@ -31,7 +31,7 @@ It has integrated with JWT authentication and this application will work as IDP 
 | -------------------------------------------- |
 
 
-It also implements Junit, integration test and front-end test (based on E2E). Please refer test folder.
+It also implements Junit, integration test and front-end test (based on protractor). Please refer test folder.
 
 ## Application Flow:
 
@@ -49,6 +49,21 @@ For the API endpoint, please refer:
 
 ```java
 au.com.halogo.web.rest.TransformController
+```
+
+## Test Overview
+
+For backend Test cases
+
+```java
+au.com.halogo.web.rest.TransformControllerIT
+au.com.halogo.service.TransformServiceT
+```
+
+For frontend test cases
+
+```javascript
+transform.component.spec.ts;
 ```
 
 ## User Case
