@@ -21,6 +21,11 @@ public class TransformService {
     public static final BigDecimal MAX_VALUE = new BigDecimal("1000000");
     public static final String ZERO = "ZERO";
 
+    /**
+     * convert number to word
+     * @param money from 0 to 1000000
+     * @return word of number
+     */
     public String convertNumberToWord(BigDecimal money) {
         assertNotNull(money, "Money can NOT be null!");
         assertTrue(money.compareTo(BigDecimal.ZERO) >= 0, "Money need large than or equal ZERO");
