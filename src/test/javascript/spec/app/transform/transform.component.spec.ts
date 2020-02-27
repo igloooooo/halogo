@@ -15,6 +15,8 @@ localVue.component('b-form-input', {});
 localVue.component('b-form-group', {});
 localVue.component('b-form-checkbox', {});
 localVue.component('b-link', {});
+localVue.component('b-card-group', {});
+localVue.component('b-card', {});
 const mockedAxios: any = axios;
 
 config.initVueApp(localVue);
@@ -52,7 +54,14 @@ describe('Transform Component', () => {
     // GIVEN
     transForm.username = 'nzhu';
     transForm.number = 123.45;
-    mockedAxios.post.mockReturnValue(Promise.reject());
+    mockedAxios.post.mockReturnValue(
+      Promise.resolve({
+        data: {
+          username: 'nzhu',
+          word: 'ONE HUNDRED AND TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS'
+        }
+      })
+    );
 
     // WHEN
     transForm.doConvert();
@@ -64,6 +73,7 @@ describe('Transform Component', () => {
       number: 123.45
     });
 
-    expect(transForm.authenticationError).toBeTruthy();
+    expect(transForm.authenticationError).toBeFalsy();
+    expect(transForm.word).toEqual('ONE HUNDRED AND TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS');
   });
 });

@@ -18,6 +18,9 @@ public class TransformServiceT {
 
     @Test
     public void checkTransform() {
+        assertThat(transformService.convertNumberToWord(new BigDecimal("0")))
+            .isEqualTo("ZERO CENT");
+
         assertThat(transformService.convertNumberToWord(new BigDecimal("123.45")))
             .isEqualTo("ONE HUNDRED AND TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS");
 
@@ -42,8 +45,18 @@ public class TransformServiceT {
         assertThat(transformService.convertNumberToWord(new BigDecimal("1235.67")))
             .isEqualTo("ONE THOUSAND TWO HUNDRED AND THIRTY-FIVE DOLLARS AND SIXTY-SEVEN CENTS");
 
+        assertThat(transformService.convertNumberToWord(new BigDecimal("1235.671111111111")))
+            .isEqualTo("ONE THOUSAND TWO HUNDRED AND THIRTY-FIVE DOLLARS AND SIXTY-SEVEN CENTS");
+
+        assertThat(transformService.convertNumberToWord(new BigDecimal("1235.6761")))
+            .isEqualTo("ONE THOUSAND TWO HUNDRED AND THIRTY-FIVE DOLLARS AND SIXTY-EIGHT CENTS");
+
         assertThrows(IllegalArgumentException.class,
             () -> transformService.convertNumberToWord(null), "Money is NULL!");
+        assertThrows(IllegalArgumentException.class,
+            () -> transformService.convertNumberToWord(new BigDecimal("-1")), "Money less then zero!");
+        assertThrows(IllegalArgumentException.class,
+            () -> transformService.convertNumberToWord(new BigDecimal("999999999")), "Money bigger then 1 million!");
     }
 
 }

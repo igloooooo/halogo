@@ -31,14 +31,15 @@ public class TransformController {
     public ResponseEntity<TransformMessageRsp> createUser(@Valid @RequestBody TransformMessageReq transformMessageReq) throws URISyntaxException {
         log.debug("REST request to transform message : {}", transformMessageReq);
 
-        if (transformMessageReq.getUsername() != null) {
+        if (transformMessageReq.getUsername() != null
+            && !(transformMessageReq.getNumber() < 0 || transformMessageReq.getNumber() > TransformService.MAX_VALUE.floatValue())) {
             BigDecimal money = BigDecimal.valueOf(transformMessageReq.getNumber()).setScale(2, BigDecimal.ROUND_HALF_UP);
             TransformMessageRsp rsp = new TransformMessageRsp();
             rsp.setUsername(transformMessageReq.getUsername());
             rsp.setWord(transformService.convertNumberToWord(money));
             return new ResponseEntity<>(rsp, HttpStatus.OK);
         } else {
-            throw new BadRequestAlertException("Name is mandatory field", "transformServie", "nameExist");
+            throw new BadRequestAlertException("Parameter is invalid", "transformServie", "nameExist");
         }
     }
 }

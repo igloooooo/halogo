@@ -14,8 +14,8 @@
                         </b-form-input>
                     </b-form-group>
                     <b-form-group label="Number"  label-for="password">
-                        <b-form-input id="number" name="number" placeholder="Input the number" v-model="number"
-                                      step="0.01" min="0" required>
+                        <b-form-input id="number" type="number" name="number" placeholder="Input the number (0 to 1000000)" v-model="number"
+                                      step="0.01" min="0" max="1000000" required>
                         </b-form-input>
                     </b-form-group>
                     <div>
@@ -30,7 +30,7 @@
                 </div>
                 <div>
                     <b-alert show variant="warning">
-                        <span>Please input you number and click submit button</span>
+                        <span>Please input you number (0 to 1000000) and click submit button</span>
                     </b-alert>
                 </div>
             </div>

@@ -7,16 +7,19 @@ export default class TransformForm extends Vue {
   public username = null;
   public number = null;
   public word = null;
-  public authenticationError = null;
+  public authenticationError = false;
 
   public doConvert(): void {
     const data = { username: this.username, number: this.number };
+    this.authenticationError = false;
     axios
       .post('api/transform', data)
       .then(result => {
         this.word = result.data.word;
       })
       .catch(() => {
+        this.word = null;
+        this.number = null;
         this.authenticationError = true;
       });
   }

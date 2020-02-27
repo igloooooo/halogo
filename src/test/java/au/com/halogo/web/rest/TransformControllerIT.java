@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = HalogoApp.class)
 public class TransformControllerIT {
     private static final String TEST_123_45_WORD = "ONE HUNDRED AND TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS";
+    private static final String TEST_0_WORD = "ZERO CENT";
     @Autowired
     private MockMvc restUserMockMvc;
 
@@ -33,5 +34,40 @@ public class TransformControllerIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.word").value(TEST_123_45_WORD));
+    }
+
+    @Test
+    public void convertNumberWithZero() throws Exception {
+        TransformMessageReq req = new TransformMessageReq();
+        req.setUsername("nzhu");
+        req.setNumber(0f);
+        restUserMockMvc.perform(post("/api/transform")
+            .contentType(TestUtil.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(req)))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.word").value(TEST_0_WORD));
+    }
+
+    @Test
+    public void convertNumberWithLargeThanMillion() throws Exception {
+        TransformMessageReq req = new TransformMessageReq();
+        req.setUsername("nzhu");
+        req.setNumber(1100000f);
+        restUserMockMvc.perform(post("/api/transform")
+            .contentType(TestUtil.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(req)))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void convertNumberWithLessThanZero() throws Exception {
+        TransformMessageReq req = new TransformMessageReq();
+        req.setUsername("nzhu");
+        req.setNumber(-11f);
+        restUserMockMvc.perform(post("/api/transform")
+            .contentType(TestUtil.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(req)))
+            .andExpect(status().isBadRequest());
     }
 }

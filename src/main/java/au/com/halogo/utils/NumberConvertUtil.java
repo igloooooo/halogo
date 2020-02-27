@@ -43,9 +43,9 @@ public final class NumberConvertUtil {
         }
 
         if (n < 10000000) {
-            return convert(n / 100000) + " Lakh" + ((n % 100000 != 0) ? " " : "") + convert(n % 100000);
+            return convert(n / 100000) + " Million" + ((n % 100000 != 0) ? " " : "") + convert(n % 100000);
         }
 
-        return convert(n / 10000000) + " Crore" + ((n % 10000000 != 0) ? " " : "") + convert(n % 10000000);
+        return convert(n / 10000000) + " Billion" + ((n % 10000000 != 0) ? " " : "") + convert(n % 10000000);
     }
 }
