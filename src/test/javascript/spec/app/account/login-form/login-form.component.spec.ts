@@ -88,7 +88,6 @@ describe('LoginForm Component', () => {
       rememberMe: true
     });
 
-    expect(loginForm.authenticationError).toBeFalsy();
     expect(localStorage.getItem('jhi-authenticationToken')).toEqual(jwtSecret);
   });
 });
